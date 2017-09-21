@@ -8,9 +8,15 @@ public class DeckTest {
 
 	@Test
 	public void TestDeck() {
-		
-		//	TODO: Build a deck(1), make sure there are 52 cards in the deck
-		//	TODO: Build a deck(6), make sure there are 312 cards in the deck 
-	}
+		Deck d = new Deck(1);
+		if ((52 == d.getDeck().size())== true) {
+			fail(" value is" + Integer.toString(d.getDeck().size()));
+		}
 
+		Deck d1 = new Deck(6);
+		if ((312 == d1.getDeck().size())== true) {
+			fail("value is" + Integer.toString(d.getDeck().size()));
+		}
+
+	}
 }

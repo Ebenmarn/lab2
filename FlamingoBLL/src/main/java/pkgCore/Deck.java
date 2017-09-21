@@ -1,19 +1,47 @@
 package pkgCore;
 
+import pkgEnum.eRank;
+import pkgEnum.eSuit;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Deck {
 
-	//	TODO: Add 'cards' attribute that is an ArrayList of Card
 	
-	
-	//	TODO: Add a contructor that passes in the number of decks, and then populates
-	//			ArrayList<Card> with cards (depending on number of decks).
-	
-	//			Example: Deck(1) will build one 52-card deck.  There are 52 different cards
-	//			2 clubs, 3 clubs... Ace clubs, 2 hearts, 3 hearts... Ace hearts, etc
-	
-	//			Deck(2) will create an array of 104 cards.
-	
-	
-	//	TODO: Add a draw() method that will take a card from the deck and
-	//			return it to the caller
+
+	private ArrayList<Card> Deck = new ArrayList<Card>();
+
+	public Deck(int NumDeck) {
+		// the .values returns an array that contains the list of the enumeration
+		// constants
+		// so for each suit value we find a rank value and add it to a new card. It
+		// starts from the begining of the list
+		for (; NumDeck > 0; NumDeck--) {
+			for (eSuit suit : eSuit.values()) {
+				for (eRank rank : eRank.values()) {
+					Deck.add(new Card(rank, suit));
+				}
+			}
+		}
+		Collections.shuffle(Deck);
+
+	}
+
+	public ArrayList<Card> getDeck() {
+		return Deck;
+	}
+
+	public void setDeck(ArrayList<Card> deck) {
+		Deck = deck;
+	}
+
+	public Deck(ArrayList<Card> deck) {
+		super();
+		Deck = deck;
+	}
+
+	public Card Draw() {
+
+		return Deck.remove(0);
+	}
 }
